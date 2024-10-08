@@ -26,8 +26,8 @@ repositories {
 	maven {
 		url = uri("https://maven.pkg.github.com/QueueTicket/common")
 		credentials {
-			username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_USERNAME")
-			password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
+			username = System.getenv("GITHUB_USERNAME")
+			password = System.getenv("GITHUB_TOKEN")
 		}
 	}
 }
@@ -37,13 +37,21 @@ ext {
 }
 
 dependencies {
-	implementation 'com.qticket:common:0.0.7'
+	implementation 'com.qticket:common:0.0.12'
 
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
 	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+
+	// jwt
+	implementation 'io.jsonwebtoken:jjwt:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
+	runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'
+
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
