@@ -62,11 +62,11 @@ public class AuthService {
             throw new QueueTicketException(AuthErrorCode.NOT_FOUND_ERROR);
         }
 
-        String token = jwtTokenProvider.generateToken(user.getEmail(), user.getUserRole().name());
+        String token = jwtTokenProvider.generateToken(user.getId().toString(), user.getUserRole().name());
 
         // 사용자 정보와 함께 Redis에 저장
         Map<String, String> tokenData = new HashMap<>();
-        tokenData.put("userId", user.getEmail());
+        tokenData.put("userId", user.getId().toString());
         tokenData.put("userRole", user.getUserRole().name());
 
         // Redis에 토큰과 사용자 정보를 캐싱 (해시 형태로 저장)
