@@ -2,7 +2,7 @@ name: Auth Deploy to Amazon ECS
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 env:
   AWS_REGION: ap-northeast-2                         # AWS Region, 예: ap-northeast-2 (오타 수정)
