@@ -61,7 +61,6 @@ public class AuthService {
         if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new QueueTicketException(AuthErrorCode.NOT_FOUND_ERROR);
         }
-
         String token = jwtTokenProvider.generateToken(user.getId().toString(), user.getUserRole().name());
 
         // 사용자 정보와 함께 Redis에 저장

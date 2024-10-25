@@ -30,7 +30,7 @@ public class JwtTokenProvider {
     public static final String BEARER_PREFIX = "Bearer ";
 
     // JWT 토큰 생성
-    public String generateToken(String userId, String role) {
+    public String generateToken(Long userId, String role) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("X-USER-ID", userId);
         claims.put("X-USER-ROLE", role);
